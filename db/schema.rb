@@ -11,6 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170625013056) do
+
+  create_table "administrators", force: :cascade do |t|
+    t.string   "email",                           null: false
+    t.string   "email_for_index",                 null: false
+    t.string   "hashed_password"
+    t.boolean  "suspended",       default: false, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "administrators", ["email_for_index"], name: "index_administrators_on_email_for_index", unique: true
+
+  create_table "staff_members", force: :cascade do |t|
+    t.string   "email",                            null: false
+    t.string   "email_for_index",                  null: false
+    t.string   "family_name",                      null: false
+    t.string   "given_name",                       null: false
+    t.string   "family_name_kana",                 null: false
+    t.string   "given_name_kana",                  null: false
+    t.string   "hashed_password"
+    t.date     "start_date",                       null: false
+    t.date     "end_date",                         null: false
+    t.boolean  "suspended",        default: false, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "staff_members", ["email_for_index"], name: "index_staff_members_on_email_for_index", unique: true
+  add_index "staff_members", ["family_name_kana", "given_name_kana"], name: "index_staff_members_on_family_name_kana_and_given_name_kana"
 
 end
