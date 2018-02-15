@@ -32,7 +32,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'bcrypt'
 gem 'nokogiri'
 gem 'rails-i18n'
-
+gem 'pry-byebug'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
